@@ -14,4 +14,7 @@
 
 @property (nonatomic, strong) NSArray *elcAssets;
 
+@property (nonatomic, strong) UIColor *navigationBarColor;
+@property (nonatomic, assign) CGFloat browserImageWidth;
+
 @end

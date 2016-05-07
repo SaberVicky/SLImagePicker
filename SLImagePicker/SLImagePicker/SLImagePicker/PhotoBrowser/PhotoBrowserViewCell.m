@@ -25,6 +25,7 @@
     
     CGSize size = [self displaySizeWithImage:icon];
     
+    
     self.imageView.frame = CGRectMake(0, 0, size.width, size.height);
     if (size.height > self.scrollView.bounds.size.height) {
         self.scrollView.contentSize = size;
@@ -50,9 +51,6 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         
-        
-
-    
     }
     return self;
 }
@@ -63,17 +61,18 @@
         [view removeFromSuperview];
     }
     _scrollView =[[UIScrollView alloc] init];
+    _scrollView.delegate = self;
+    _scrollView.minimumZoomScale = 1.0;
+    _scrollView.maximumZoomScale = 2.0;
     [self.contentView addSubview:self.scrollView];
+    
+    
     _imageView = [[UIImageView alloc] init];
     [self.scrollView addSubview:self.imageView];
     
     CGRect rect = self.bounds;
     rect.size.width -= 20;
     self.scrollView.frame = rect;
-    
-    self.scrollView.delegate = self;
-    self.scrollView.minimumZoomScale = 1.0;
-    self.scrollView.maximumZoomScale = 2.0;
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {

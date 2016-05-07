@@ -44,6 +44,11 @@ typedef enum {
 //返回图片质量,默认为全屏图质量
 @property (nonatomic, assign) ReturnImageType returnImageType;
 
+//返回图片宽度像素,默认为600
+@property (nonatomic, assign) CGFloat returnImageWidth;
+
+//图片浏览器图片像素,默认为600
+@property (nonatomic, assign) CGFloat browserImageWidth;
 
 - (instancetype)initImagePicker;
 

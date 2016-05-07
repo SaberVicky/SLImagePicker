@@ -24,7 +24,8 @@
     _navigationBarColor = [UIColor blueColor];
     _navigationBarTitleColor = [UIColor whiteColor];
     _returnImageType = TypeFullScreen;
-
+    _returnImageWidth = 600;
+    _browserImageWidth = 600;
 }
 
 - (instancetype)initImagePicker {
@@ -41,9 +42,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    SLImageTableViewController *vc = (SLImageTableViewController *)self.topViewController;
-
     
     [self.navigationBar setBackgroundImage:[UIImage imageWithColor:_navigationBarColor] forBarMetrics:UIBarMetricsDefault];
     [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:_navigationBarTitleColor,UITextAttributeTextColor,nil]];

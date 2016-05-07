@@ -10,6 +10,7 @@
 #import "SLPickerCell.h"
 #import "SLImagePickerViewController.h"
 #import "PhotoBrowserViewController.h"
+#import "UIImage+SLExtension.h"
 
 static NSString * const reuseIdentifier = @"pickerCell";
 
@@ -23,6 +24,10 @@ static NSString * const reuseIdentifier = @"pickerCell";
 @property (nonatomic, assign) NSInteger left;
 @property (nonatomic, assign) NSInteger maxCount;
 @property (nonatomic, assign) ReturnImageType returnImageType;
+
+@property (nonatomic, strong) UIButton *sendButton;
+@property (nonatomic, strong) UIButton *previewButton;
+@property (nonatomic, strong) UILabel *countLabel;
 
 @end
 
@@ -57,9 +62,15 @@ static NSString * const reuseIdentifier = @"pickerCell";
 
 #pragma mark --- Private Method
 
+- (void)dismiss {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)setupUI {
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发送" style:UIBarButtonItemStylePlain target:self action:@selector(send)];
+
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(dismiss)];
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     CGFloat margin = 5;
@@ -69,12 +80,44 @@ static NSString * const reuseIdentifier = @"pickerCell";
     layout.sectionInset = UIEdgeInsetsMake(margin, margin, 0, margin);
     layout.minimumInteritemSpacing = margin;
     layout.minimumLineSpacing = margin;
-    _collectionView = [[UICollectionView alloc] initWithFrame:[UIScreen mainScreen].bounds collectionViewLayout:layout];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 49 - 64) collectionViewLayout:layout];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     _collectionView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_collectionView];
     [_collectionView registerClass:[SLPickerCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    
+    
+    SLImagePickerViewController *naVc = (SLImagePickerViewController *)self.navigationController;
+    UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 49 - 64, [UIScreen mainScreen].bounds.size.width, 49)];
+    bottomView.backgroundColor = naVc.navigationBarColor;
+    [self.view addSubview:bottomView];
+    
+    _sendButton = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 50 - 10, 7, 50, 35)];
+    [_sendButton setTitle:@"发送" forState:UIControlStateNormal];
+    [_sendButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    [_sendButton setTitleColor:[[UIColor alloc] initWithRed:218 / 25.0 green:247 / 255.0 blue:156 / 255.0 alpha:1] forState:UIControlStateDisabled];
+    [_sendButton addTarget:self action:@selector(send) forControlEvents:UIControlEventTouchUpInside];
+    _sendButton.enabled = NO;
+    [bottomView addSubview:_sendButton];
+    
+    _countLabel = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 50 - 10 - 22, 12.5, 24, 24)];
+    _countLabel.backgroundColor = [UIColor greenColor];
+    _countLabel.text = @"0";
+    _countLabel.textColor = [UIColor whiteColor];
+    _countLabel.textAlignment = NSTextAlignmentCenter;
+    _countLabel.layer.cornerRadius = 12;
+    _countLabel.clipsToBounds = YES;
+    _countLabel.hidden = YES;
+    [bottomView addSubview:_countLabel];
+    
+    _previewButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 7, 50, 35)];
+    [_previewButton setTitle:@"预览" forState:UIControlStateNormal];
+    [_previewButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_previewButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+    [_previewButton addTarget:self action:@selector(preview) forControlEvents:UIControlEventTouchUpInside];
+    _previewButton.enabled = NO;
+    [bottomView addSubview:_previewButton];
 }
 
 - (void)enumerateAssets {
@@ -90,7 +133,33 @@ static NSString * const reuseIdentifier = @"pickerCell";
     }];
 }
 
+- (void)preview {
+//    NSComparator cmptr = ^(id obj1, id obj2){
+//        if ([obj1 integerValue] > [obj2 integerValue]) {
+//            return (NSComparisonResult)NSOrderedDescending;
+//        }
+//        
+//        if ([obj1 integerValue] < [obj2 integerValue]) {
+//            return (NSComparisonResult)NSOrderedAscending;
+//        }
+//        return (NSComparisonResult)NSOrderedSame;
+//    };
+//    NSArray *sortedArray = [_selectedImages sortedArrayUsingComparator:cmptr];
+    NSMutableArray *newArr = [NSMutableArray array];
+    for (NSNumber *num in _selectedImages) {
+        [newArr addObject:_elcAssets[num.integerValue]];
+    }
+    PhotoBrowserViewController *vc = [[PhotoBrowserViewController alloc] initWithElcAssets:newArr IndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+    
+    SLImagePickerViewController *naVc = (SLImagePickerViewController *)self.navigationController;
+    vc.navigationBarColor = naVc.navigationBarColor;
+    vc.browserImageWidth = naVc.browserImageWidth;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 - (void)send {
+    
+    CGFloat imageWith = ((SLImagePickerViewController *)self.navigationController).returnImageWidth;
     
     [_sendImages removeAllObjects];
     
@@ -101,15 +170,18 @@ static NSString * const reuseIdentifier = @"pickerCell";
         if (_returnImageType == TypeThumbnail) {
             CGImageRef ref = [result thumbnail];
             UIImage *img = [[UIImage alloc]initWithCGImage:ref];
-            [_sendImages addObject:img];
+            UIImage *scaleImage = [img scaleToWidth:imageWith];
+            [_sendImages addObject:scaleImage];
         } else if (_returnImageType == TypeFullScreen) {
             CGImageRef ref = [[result  defaultRepresentation] fullScreenImage];
             UIImage *img = [[UIImage alloc]initWithCGImage:ref];
-            [_sendImages addObject:img];
+            UIImage *scaleImage = [img scaleToWidth:imageWith];
+            [_sendImages addObject:scaleImage];
         } else {
             CGImageRef ref = [[result  defaultRepresentation] fullResolutionImage];
             UIImage *img = [[UIImage alloc]initWithCGImage:ref];
-            [_sendImages addObject:img];
+            UIImage *scaleImage = [img scaleToWidth:imageWith];
+            [_sendImages addObject:scaleImage];
         }
     }
     
@@ -159,6 +231,17 @@ static NSString * const reuseIdentifier = @"pickerCell";
         } else {
             [weakself.selectedImages removeObject:@(indexPath.item)];
         }
+        
+        weakself.sendButton.enabled = weakself.selectedImages.count > 0;
+        weakself.previewButton.enabled = weakself.selectedImages.count > 0;
+        weakself.countLabel.hidden = weakself.selectedImages.count <= 0;
+        weakself.countLabel.text = [NSString stringWithFormat:@"%zd", weakself.selectedImages.count];
+        CABasicAnimation *scale = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+        scale.fromValue = @0.0;
+        scale.toValue = @1.2;
+        scale.duration = 0.25;
+        scale.removedOnCompletion = YES;
+        [weakself.countLabel.layer addAnimation:scale forKey:nil];
     };
     
     return cell;
@@ -167,9 +250,10 @@ static NSString * const reuseIdentifier = @"pickerCell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
     PhotoBrowserViewController *vc = [[PhotoBrowserViewController alloc] initWithElcAssets:_elcAssets IndexPath:indexPath];
-//    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    
-//    [self presentViewController:vc animated:YES completion:nil];
+
+    SLImagePickerViewController *naVc = (SLImagePickerViewController *)self.navigationController;
+    vc.navigationBarColor = naVc.navigationBarColor;
+    vc.browserImageWidth = naVc.browserImageWidth;
     [self.navigationController pushViewController:vc animated:YES];
     
     

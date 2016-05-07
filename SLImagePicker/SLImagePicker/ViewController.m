@@ -29,6 +29,7 @@
 - (void)clickButton {
     SLImagePickerViewController *vc = [[SLImagePickerViewController alloc] initImagePicker];
     vc.pickerDelegate = self;
+    vc.navigationBarColor = [UIColor orangeColor];
     [self presentViewController:vc animated:YES completion:nil];
 }
 

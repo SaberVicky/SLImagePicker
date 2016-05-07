@@ -8,6 +8,7 @@
 
 #import "PhotoBrowserViewController.h"
 #import "PhotoBrowserViewCell.h"
+#import "UIImage+SLExtension.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
 NSString *PhotoBrowserViewCellId = @"PhotoBrowserViewCellId";
@@ -26,13 +27,25 @@ NSString *PhotoBrowserViewCellId = @"PhotoBrowserViewCellId";
 
 - (instancetype)initWithElcAssets:(NSArray *)arrray IndexPath:(NSIndexPath *)indexPath {
     if (self = [super init]) {
+        _navigationBarColor = [UIColor blueColor];
+        _browserImageWidth = 600;
         self.elcAssets = arrray;
         self.currentIndexPath = indexPath;
     }
     return self;
 }
 
-- (void)loadView {
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    if ((floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)) {
+        self.automaticallyAdjustsScrollViewInsets=NO;
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     CGRect rect = [UIScreen mainScreen].bounds;
     rect.size.width += 20;
     self.view = [[UIView alloc] initWithFrame:rect];
@@ -40,14 +53,14 @@ NSString *PhotoBrowserViewCellId = @"PhotoBrowserViewCellId";
 }
 
 - (void)setupUI {
-    CGRect rect = self.view.bounds;
+    
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = rect.size;
+    layout.itemSize = self.view.bounds.size;
     layout.minimumInteritemSpacing = 0;
     layout.minimumLineSpacing = 0;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    _collectionView = [[UICollectionView alloc] initWithFrame:rect collectionViewLayout:layout];
+    _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
     _collectionView.pagingEnabled = YES;
     _collectionView.bounces = YES;
     _collectionView.showsHorizontalScrollIndicator = NO;
@@ -58,7 +71,7 @@ NSString *PhotoBrowserViewCellId = @"PhotoBrowserViewCellId";
     
     _topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 64)];
 //    _topView.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:0.5];
-    _topView.backgroundColor = [UIColor blueColor] ;
+    _topView.backgroundColor = _navigationBarColor ;
     [self.view addSubview:_topView];
     
     UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 26, 32, 32)];
@@ -70,9 +83,9 @@ NSString *PhotoBrowserViewCellId = @"PhotoBrowserViewCellId";
 //    topButton.backgroundColor = [UIColor whiteColor];
 //    [_topView addSubview:topButton];
     
-    _bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 44, [UIScreen mainScreen].bounds.size.width, 44)];
+    _bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 49, [UIScreen mainScreen].bounds.size.width, 49)];
 //    _bottomView.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:0.5];
-    _bottomView.backgroundColor = [UIColor blueColor] ;
+    _bottomView.backgroundColor = _navigationBarColor;
     
     [self.view addSubview:_bottomView];
     
@@ -80,14 +93,7 @@ NSString *PhotoBrowserViewCellId = @"PhotoBrowserViewCellId";
 }
 
 - (void)clickCancelButton {
-
-    
     [self.navigationController popViewControllerAnimated:YES];
-}
-
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 
@@ -102,13 +108,14 @@ NSString *PhotoBrowserViewCellId = @"PhotoBrowserViewCellId";
     [cell setupUI];
     ALAsset *result = self.elcAssets[indexPath.item];
     CGImageRef ref = [[result  defaultRepresentation]fullScreenImage];
+    
     UIImage *img = [[UIImage alloc]initWithCGImage:ref];
-//    UIImage *scaleImage = [img scaleToWidth:600];
+    UIImage *scaleImage = [img scaleToWidth:_browserImageWidth];
     cell.imageView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
     [cell.imageView addGestureRecognizer:tap];
     cell.backgroundColor = [UIColor blackColor];
-    cell.icon = img;
+    cell.icon = scaleImage;
     return cell;
 }
 
