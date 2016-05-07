@@ -17,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 30)];
     button.backgroundColor = [UIColor blueColor];
