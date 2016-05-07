@@ -8,8 +8,8 @@
 
 #import "SLPickerViewController.h"
 #import "SLPickerCell.h"
-#import "SLImageBrowserViewController.h"
 #import "SLImagePickerViewController.h"
+#import "PhotoBrowserViewController.h"
 
 static NSString * const reuseIdentifier = @"pickerCell";
 
@@ -36,6 +36,11 @@ static NSString * const reuseIdentifier = @"pickerCell";
         _sendImages = [NSMutableArray array];
     }
     return self;
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)viewDidLoad {
@@ -160,10 +165,16 @@ static NSString * const reuseIdentifier = @"pickerCell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    SLImageBrowserViewController *vc = [[SLImageBrowserViewController alloc] init];
-    vc.elcAssets = _elcAssets;
-    vc.currentIndexPath = indexPath;
+
+    PhotoBrowserViewController *vc = [[PhotoBrowserViewController alloc] initWithElcAssets:_elcAssets IndexPath:indexPath];
+//    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    
+//    [self presentViewController:vc animated:YES completion:nil];
     [self.navigationController pushViewController:vc animated:YES];
+    
+    
 }
+
+
 
 @end

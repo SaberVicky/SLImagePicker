@@ -24,7 +24,7 @@
     _navigationBarColor = [UIColor blueColor];
     _navigationBarTitleColor = [UIColor whiteColor];
     _returnImageType = TypeFullScreen;
-    _showAlbumWithNoPhotos = NO;
+
 }
 
 - (instancetype)initImagePicker {
@@ -43,7 +43,7 @@
     [super viewWillAppear:animated];
     
     SLImageTableViewController *vc = (SLImageTableViewController *)self.topViewController;
-    vc.showAlbumWithNoPhotos = _showAlbumWithNoPhotos;
+
     
     [self.navigationBar setBackgroundImage:[UIImage imageWithColor:_navigationBarColor] forBarMetrics:UIBarMetricsDefault];
     [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:_navigationBarTitleColor,UITextAttributeTextColor,nil]];

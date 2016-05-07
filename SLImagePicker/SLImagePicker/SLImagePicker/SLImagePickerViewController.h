@@ -44,8 +44,6 @@ typedef enum {
 //返回图片质量,默认为全屏图质量
 @property (nonatomic, assign) ReturnImageType returnImageType;
 
-//是否显示数量为0的相册,默认为NO,不显示
-@property (nonatomic, assign) BOOL showAlbumWithNoPhotos;
 
 - (instancetype)initImagePicker;
 

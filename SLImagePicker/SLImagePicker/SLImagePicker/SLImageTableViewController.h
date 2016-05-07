@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SLImageTableViewController : UITableViewController
-@property (nonatomic, assign) BOOL showAlbumWithNoPhotos;
+
 @end

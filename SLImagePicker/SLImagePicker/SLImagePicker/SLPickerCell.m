@@ -7,10 +7,11 @@
 //
 
 #import "SLPickerCell.h"
+#import "SLPickerButton.h"
 
 @interface SLPickerCell()
 
-@property (nonatomic, strong) UIButton *selectButton;
+@property (nonatomic, strong) SLPickerButton *selectButton;
 
 @end
 
@@ -29,9 +30,9 @@
     [self.contentView addSubview:_iconView];
     
     CGFloat wh = self.contentView.bounds.size.width / 2;
-//    self.contentView.bounds.size.width - 1.5 * wh
-    _selectButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, wh, wh)];
-    _selectButton.backgroundColor = _isSelected ? [UIColor redColor] : [UIColor whiteColor];
+    _selectButton = [[SLPickerButton alloc] initWithFrame:CGRectMake(wh, 0, wh, wh)];
+//    _selectButton.backgroundColor = _isSelected ? [UIColor redColor] : [UIColor whiteColor];
+    _selectButton.isSelected = _isSelected;
     [_selectButton addTarget:self action:@selector(clickButton) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_selectButton];
     
@@ -39,13 +40,15 @@
 
 - (void)clickButton {
     _isSelected = !_isSelected;
-    _selectButton.backgroundColor = _isSelected ? [UIColor redColor] : [UIColor whiteColor];
-    
+//    _selectButton.backgroundColor = _isSelected ? [UIColor redColor] : [UIColor whiteColor];
     self.selectBlock(_isSelected);
+    _selectButton.isSelected = _isSelected;
 }
 
 - (void)setIsSelected:(BOOL)isSelected {
-    _selectButton.backgroundColor = isSelected ? [UIColor redColor] : [UIColor whiteColor];
+    _isSelected = isSelected;
+//    _selectButton.backgroundColor = isSelected ? [UIColor redColor] : [UIColor whiteColor];
+    _selectButton.isSelected = _isSelected;
 }
 
 @end

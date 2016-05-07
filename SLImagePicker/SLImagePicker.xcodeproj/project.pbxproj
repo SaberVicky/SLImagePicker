@@ -13,12 +13,17 @@
 		3B09EE8A1CDCB1B2009F1F52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B09EE881CDCB1B2009F1F52 /* Main.storyboard */; };
 		3B09EE8C1CDCB1B2009F1F52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B09EE8B1CDCB1B2009F1F52 /* Assets.xcassets */; };
 		3B09EE8F1CDCB1B2009F1F52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B09EE8D1CDCB1B2009F1F52 /* LaunchScreen.storyboard */; };
-		3B09EEA31CDCB1CF009F1F52 /* SLImageBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B09EE981CDCB1CF009F1F52 /* SLImageBrowserViewController.m */; };
-		3B09EEA41CDCB1CF009F1F52 /* SLImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B09EE9A1CDCB1CF009F1F52 /* SLImagePickerViewController.m */; };
-		3B09EEA51CDCB1CF009F1F52 /* SLImageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B09EE9C1CDCB1CF009F1F52 /* SLImageTableViewController.m */; };
-		3B09EEA61CDCB1CF009F1F52 /* SLPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B09EE9E1CDCB1CF009F1F52 /* SLPickerCell.m */; };
-		3B09EEA71CDCB1CF009F1F52 /* SLPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B09EEA01CDCB1CF009F1F52 /* SLPickerViewController.m */; };
-		3B09EEA81CDCB1CF009F1F52 /* UIImage+SLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B09EEA21CDCB1CF009F1F52 /* UIImage+SLExtension.m */; };
+		3B09EEFE1CDDB6BA009F1F52 /* PhotoBrowserViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B09EEEE1CDDB6B9009F1F52 /* PhotoBrowserViewCell.m */; };
+		3B09EEFF1CDDB6BA009F1F52 /* PhotoBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B09EEF01CDDB6B9009F1F52 /* PhotoBrowserViewController.m */; };
+		3B09EF001CDDB6BA009F1F52 /* sl_arrow_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B09EEF11CDDB6B9009F1F52 /* sl_arrow_back@2x.png */; };
+		3B09EF011CDDB6BA009F1F52 /* SLImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B09EEF31CDDB6B9009F1F52 /* SLImagePickerViewController.m */; };
+		3B09EF021CDDB6BA009F1F52 /* SLImageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B09EEF51CDDB6BA009F1F52 /* SLImageTableViewController.m */; };
+		3B09EF031CDDB6BA009F1F52 /* SLPickerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B09EEF71CDDB6BA009F1F52 /* SLPickerButton.m */; };
+		3B09EF041CDDB6BA009F1F52 /* SLPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B09EEF91CDDB6BA009F1F52 /* SLPickerCell.m */; };
+		3B09EF051CDDB6BA009F1F52 /* SLPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B09EEFB1CDDB6BA009F1F52 /* SLPickerViewController.m */; };
+		3B09EF061CDDB6BA009F1F52 /* UIImage+SLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B09EEFD1CDDB6BA009F1F52 /* UIImage+SLExtension.m */; };
+		3B09EF091CDDB75F009F1F52 /* waitingOrderSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B09EF071CDDB75F009F1F52 /* waitingOrderSelected@2x.png */; };
+		3B09EF0A1CDDB75F009F1F52 /* waitingUnselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B09EF081CDDB75F009F1F52 /* waitingUnselected@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,18 +37,25 @@
 		3B09EE8B1CDCB1B2009F1F52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B09EE8E1CDCB1B2009F1F52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B09EE901CDCB1B2009F1F52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3B09EE971CDCB1CF009F1F52 /* SLImageBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLImageBrowserViewController.h; sourceTree = "<group>"; };
-		3B09EE981CDCB1CF009F1F52 /* SLImageBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLImageBrowserViewController.m; sourceTree = "<group>"; };
-		3B09EE991CDCB1CF009F1F52 /* SLImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLImagePickerViewController.h; sourceTree = "<group>"; };
-		3B09EE9A1CDCB1CF009F1F52 /* SLImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLImagePickerViewController.m; sourceTree = "<group>"; };
-		3B09EE9B1CDCB1CF009F1F52 /* SLImageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLImageTableViewController.h; sourceTree = "<group>"; };
-		3B09EE9C1CDCB1CF009F1F52 /* SLImageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLImageTableViewController.m; sourceTree = "<group>"; };
-		3B09EE9D1CDCB1CF009F1F52 /* SLPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPickerCell.h; sourceTree = "<group>"; };
-		3B09EE9E1CDCB1CF009F1F52 /* SLPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLPickerCell.m; sourceTree = "<group>"; };
-		3B09EE9F1CDCB1CF009F1F52 /* SLPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPickerViewController.h; sourceTree = "<group>"; };
-		3B09EEA01CDCB1CF009F1F52 /* SLPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLPickerViewController.m; sourceTree = "<group>"; };
-		3B09EEA11CDCB1CF009F1F52 /* UIImage+SLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SLExtension.h"; sourceTree = "<group>"; };
-		3B09EEA21CDCB1CF009F1F52 /* UIImage+SLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SLExtension.m"; sourceTree = "<group>"; };
+		3B09EEED1CDDB6B9009F1F52 /* PhotoBrowserViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoBrowserViewCell.h; sourceTree = "<group>"; };
+		3B09EEEE1CDDB6B9009F1F52 /* PhotoBrowserViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoBrowserViewCell.m; sourceTree = "<group>"; };
+		3B09EEEF1CDDB6B9009F1F52 /* PhotoBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoBrowserViewController.h; sourceTree = "<group>"; };
+		3B09EEF01CDDB6B9009F1F52 /* PhotoBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoBrowserViewController.m; sourceTree = "<group>"; };
+		3B09EEF11CDDB6B9009F1F52 /* sl_arrow_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sl_arrow_back@2x.png"; sourceTree = "<group>"; };
+		3B09EEF21CDDB6B9009F1F52 /* SLImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLImagePickerViewController.h; sourceTree = "<group>"; };
+		3B09EEF31CDDB6B9009F1F52 /* SLImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLImagePickerViewController.m; sourceTree = "<group>"; };
+		3B09EEF41CDDB6BA009F1F52 /* SLImageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLImageTableViewController.h; sourceTree = "<group>"; };
+		3B09EEF51CDDB6BA009F1F52 /* SLImageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLImageTableViewController.m; sourceTree = "<group>"; };
+		3B09EEF61CDDB6BA009F1F52 /* SLPickerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPickerButton.h; sourceTree = "<group>"; };
+		3B09EEF71CDDB6BA009F1F52 /* SLPickerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLPickerButton.m; sourceTree = "<group>"; };
+		3B09EEF81CDDB6BA009F1F52 /* SLPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPickerCell.h; sourceTree = "<group>"; };
+		3B09EEF91CDDB6BA009F1F52 /* SLPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLPickerCell.m; sourceTree = "<group>"; };
+		3B09EEFA1CDDB6BA009F1F52 /* SLPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPickerViewController.h; sourceTree = "<group>"; };
+		3B09EEFB1CDDB6BA009F1F52 /* SLPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLPickerViewController.m; sourceTree = "<group>"; };
+		3B09EEFC1CDDB6BA009F1F52 /* UIImage+SLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SLExtension.h"; sourceTree = "<group>"; };
+		3B09EEFD1CDDB6BA009F1F52 /* UIImage+SLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SLExtension.m"; sourceTree = "<group>"; };
+		3B09EF071CDDB75F009F1F52 /* waitingOrderSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "waitingOrderSelected@2x.png"; sourceTree = "<group>"; };
+		3B09EF081CDDB75F009F1F52 /* waitingUnselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "waitingUnselected@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +88,7 @@
 		3B09EE7E1CDCB1B2009F1F52 /* SLImagePicker */ = {
 			isa = PBXGroup;
 			children = (
-				3B09EE961CDCB1CF009F1F52 /* SLImagePicker */,
+				3B09EEEB1CDDB6B9009F1F52 /* SLImagePicker */,
 				3B09EE821CDCB1B2009F1F52 /* AppDelegate.h */,
 				3B09EE831CDCB1B2009F1F52 /* AppDelegate.m */,
 				3B09EE851CDCB1B2009F1F52 /* ViewController.h */,
@@ -98,23 +110,38 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		3B09EE961CDCB1CF009F1F52 /* SLImagePicker */ = {
+		3B09EEEB1CDDB6B9009F1F52 /* SLImagePicker */ = {
 			isa = PBXGroup;
 			children = (
-				3B09EE971CDCB1CF009F1F52 /* SLImageBrowserViewController.h */,
-				3B09EE981CDCB1CF009F1F52 /* SLImageBrowserViewController.m */,
-				3B09EE991CDCB1CF009F1F52 /* SLImagePickerViewController.h */,
-				3B09EE9A1CDCB1CF009F1F52 /* SLImagePickerViewController.m */,
-				3B09EE9B1CDCB1CF009F1F52 /* SLImageTableViewController.h */,
-				3B09EE9C1CDCB1CF009F1F52 /* SLImageTableViewController.m */,
-				3B09EE9D1CDCB1CF009F1F52 /* SLPickerCell.h */,
-				3B09EE9E1CDCB1CF009F1F52 /* SLPickerCell.m */,
-				3B09EE9F1CDCB1CF009F1F52 /* SLPickerViewController.h */,
-				3B09EEA01CDCB1CF009F1F52 /* SLPickerViewController.m */,
-				3B09EEA11CDCB1CF009F1F52 /* UIImage+SLExtension.h */,
-				3B09EEA21CDCB1CF009F1F52 /* UIImage+SLExtension.m */,
+				3B09EEEC1CDDB6B9009F1F52 /* PhotoBrowser */,
+				3B09EEF21CDDB6B9009F1F52 /* SLImagePickerViewController.h */,
+				3B09EEF31CDDB6B9009F1F52 /* SLImagePickerViewController.m */,
+				3B09EEF41CDDB6BA009F1F52 /* SLImageTableViewController.h */,
+				3B09EEF51CDDB6BA009F1F52 /* SLImageTableViewController.m */,
+				3B09EEF61CDDB6BA009F1F52 /* SLPickerButton.h */,
+				3B09EEF71CDDB6BA009F1F52 /* SLPickerButton.m */,
+				3B09EEF81CDDB6BA009F1F52 /* SLPickerCell.h */,
+				3B09EEF91CDDB6BA009F1F52 /* SLPickerCell.m */,
+				3B09EEFA1CDDB6BA009F1F52 /* SLPickerViewController.h */,
+				3B09EEFB1CDDB6BA009F1F52 /* SLPickerViewController.m */,
+				3B09EEFC1CDDB6BA009F1F52 /* UIImage+SLExtension.h */,
+				3B09EEFD1CDDB6BA009F1F52 /* UIImage+SLExtension.m */,
 			);
 			path = SLImagePicker;
+			sourceTree = "<group>";
+		};
+		3B09EEEC1CDDB6B9009F1F52 /* PhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				3B09EEED1CDDB6B9009F1F52 /* PhotoBrowserViewCell.h */,
+				3B09EEEE1CDDB6B9009F1F52 /* PhotoBrowserViewCell.m */,
+				3B09EEEF1CDDB6B9009F1F52 /* PhotoBrowserViewController.h */,
+				3B09EEF01CDDB6B9009F1F52 /* PhotoBrowserViewController.m */,
+				3B09EF071CDDB75F009F1F52 /* waitingOrderSelected@2x.png */,
+				3B09EF081CDDB75F009F1F52 /* waitingUnselected@2x.png */,
+				3B09EEF11CDDB6B9009F1F52 /* sl_arrow_back@2x.png */,
+			);
+			path = PhotoBrowser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,8 +201,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B09EF0A1CDDB75F009F1F52 /* waitingUnselected@2x.png in Resources */,
 				3B09EE8F1CDCB1B2009F1F52 /* LaunchScreen.storyboard in Resources */,
+				3B09EF091CDDB75F009F1F52 /* waitingOrderSelected@2x.png in Resources */,
 				3B09EE8C1CDCB1B2009F1F52 /* Assets.xcassets in Resources */,
+				3B09EF001CDDB6BA009F1F52 /* sl_arrow_back@2x.png in Resources */,
 				3B09EE8A1CDCB1B2009F1F52 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,15 +217,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B09EEA51CDCB1CF009F1F52 /* SLImageTableViewController.m in Sources */,
 				3B09EE871CDCB1B2009F1F52 /* ViewController.m in Sources */,
-				3B09EEA81CDCB1CF009F1F52 /* UIImage+SLExtension.m in Sources */,
+				3B09EF011CDDB6BA009F1F52 /* SLImagePickerViewController.m in Sources */,
+				3B09EF041CDDB6BA009F1F52 /* SLPickerCell.m in Sources */,
+				3B09EEFF1CDDB6BA009F1F52 /* PhotoBrowserViewController.m in Sources */,
 				3B09EE841CDCB1B2009F1F52 /* AppDelegate.m in Sources */,
-				3B09EEA41CDCB1CF009F1F52 /* SLImagePickerViewController.m in Sources */,
-				3B09EEA31CDCB1CF009F1F52 /* SLImageBrowserViewController.m in Sources */,
-				3B09EEA61CDCB1CF009F1F52 /* SLPickerCell.m in Sources */,
+				3B09EF061CDDB6BA009F1F52 /* UIImage+SLExtension.m in Sources */,
+				3B09EF031CDDB6BA009F1F52 /* SLPickerButton.m in Sources */,
+				3B09EF021CDDB6BA009F1F52 /* SLImageTableViewController.m in Sources */,
+				3B09EEFE1CDDB6BA009F1F52 /* PhotoBrowserViewCell.m in Sources */,
 				3B09EE811CDCB1B2009F1F52 /* main.m in Sources */,
-				3B09EEA71CDCB1CF009F1F52 /* SLPickerViewController.m in Sources */,
+				3B09EF051CDDB6BA009F1F52 /* SLPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

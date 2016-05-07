@@ -29,13 +29,12 @@
     return self;
 }
 
-
 - (void)test {
     dispatch_async(dispatch_get_main_queue(), ^{
         void (^assetGroupEnumberatorFailure)(NSError *) = ^(NSError *error) {
             
             if ([ALAssetsLibrary authorizationStatus] == ALAuthorizationStatusDenied) {
-                NSString *errorMessage = NSLocalizedString(@"无法访问相册.请在'设置->隐私->照片'设置为打开状态.", nil);
+                NSString *errorMessage = NSLocalizedString(@"无法访问相册.请在'设置->定位服务'设置为打开状态.", nil);
                 [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Access Denied", nil) message:errorMessage delegate:nil cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil] show];
                 
             } else {
@@ -109,7 +108,7 @@
     NSInteger gCount = [g numberOfAssets];
     
     
-    if (gCount <= 0 && !_showAlbumWithNoPhotos) {
+    if (gCount <= 0) {
         [self.assetGroups removeObjectAtIndex:indexPath.row];
         [self.tableView reloadData];
     }
